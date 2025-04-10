@@ -12,7 +12,7 @@ Counter     ds.b 1
 
 Start       CLEAN_START
 
-NextFrame   VERTICAL_SYNC
+NextFrame   VERTICAL_SYNC   ; 3+1 lines of vsync
 
             ldx #36         ; 36 lines of VBLANK
 LVBlank     sta WSYNC
