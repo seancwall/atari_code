@@ -12,20 +12,10 @@ BGColor     ds.b 1
 
 Start       CLEAN_START
 
-NextFrame   lda #2          ; Enable VBLANK
-            sta VBLANK
-
-            sta WSYNC       ; wait for next line
-            sta VSYNC       ; enable VSYNC
-
-            sta WSYNC       ; hold for three scanlines
-            sta WSYNC
-            sta WSYNC
             
-            lda #0          ; turn off VSYNC
-            sta VSYNC
+NextFrame   VERTICAL_SYNC   ; 3+1 lines of VSYNC
 
-            ldx #37         ; 37 lines of VBLANK
+            ldx #36         ; 36 lines of VBLANK (plus 1 from above)
 LVBlank     sta WSYNC
             dex
             bne LVBlank
